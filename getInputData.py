@@ -1,6 +1,12 @@
-import requests
-import json
+from dotenv import load_dotenv
+import os
+from aocd import get_data
 
-def getInputData(day):
-    res = requests.get("https://adventofcode.com/2024/day/{day}/input")
-    return json.loads(res.text)
+# Load the .env file
+load_dotenv()
+
+# Now get the environment variable
+
+def getTodaysData(day):
+    data = get_data(day=day, year=2024)
+    return data
