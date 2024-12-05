@@ -41,9 +41,11 @@ class CheckSafe:
 def makeNestedArray(data):
     nestedArray = []
     dataLines = data.splitlines()
+    print(dataLines)
     for line in dataLines:
      lineList = list(map(int, line.split()))
      nestedArray.append(lineList)
+    print(nestedArray)
     return nestedArray
 
 nestedArray = makeNestedArray(inputData)
