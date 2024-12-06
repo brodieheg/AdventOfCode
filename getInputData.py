@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-import os
 from aocd import get_data
 
 # Load the .env file
