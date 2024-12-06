@@ -3,7 +3,6 @@ import re
 data = getInputData.getTodaysData(3)
 
 mul = '(?P<mul>mul\((\d{1,3}),(\d{1,3})\))'
-
 do = '(?P<do>do\(\))'
 dont = '(?P<dont>don\'t\(\))'
 pattern = mul + '|' + do + '|' + dont
