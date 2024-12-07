@@ -1,5 +1,4 @@
 import getInputData
-import numpy as np
 data = getInputData.getTodaysData(5)
 import math
 
