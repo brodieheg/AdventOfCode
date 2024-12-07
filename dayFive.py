@@ -60,7 +60,7 @@ for list in lists:
     if(listIsValid(list) == True): middleTotal += list[math.floor(len(list) / 2)]
 
 for list in invalidLists:
-    orderedList = sort_instruction(list, orderRulesList)
+    orderedList = reorderList(list, orderRulesList)
     middleInvalidTotal += list[math.floor(len(list) / 2)]
 
 
