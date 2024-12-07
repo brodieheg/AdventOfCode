@@ -5,6 +5,7 @@ lines = data.splitlines()
 print(lines)
 XMAS = ['X', 'M', 'A', 'S']
 XMASCount = 0
+MasCount = 0
 
 def correctNextLetter(possibleDirections, currentLetter, lineIndex, letterIndex):
     # fine index of currentLetter in XMAS, check each cardinal direction
@@ -39,8 +40,38 @@ def correctNextLetter(possibleDirections, currentLetter, lineIndex, letterIndex)
 
     return
 
-for lineIndex, line in enumerate(lines):
-    for letterIndex, letter in enumerate(line):
-        if(letter == 'X'):
-         correctNextLetter(['north', 'south', 'east', 'west', 'northEast', 'northWest', 'southEast', 'southWest'], letter, lineIndex, letterIndex)
-print(XMASCount)
+def findMas(aIndex, lineIndex):
+    northEast = None if (lineIndex == 0 or aIndex == len(lines[lineIndex]) - 1) else lines[lineIndex - 1][aIndex + 1]
+    southEast = None if (lineIndex == len(lines) - 1 or aIndex == len(lines[lineIndex]) - 1) else lines[lineIndex + 1][aIndex + 1]
+    northWest = None if (lineIndex == 0 or aIndex == 0) else lines[lineIndex - 1][aIndex - 1]
+    southWest = None if (lineIndex == len(lines) - 1 or aIndex == 0) else lines[lineIndex + 1][aIndex - 1]
+    mas = 0
+    global MasCount
+    if(northEast == 'M' and southWest == 'S'):
+        mas += 1
+    if(northEast == 'S' and southWest == 'M'):
+        mas += 1
+    if(northWest == 'M' and southEast == 'S'):
+        mas += 1
+    if(northWest =='S' and southEast == 'M'):
+        mas += 1
+    if mas == 2: MasCount += 1
+     
+        
+
+
+def partOne():
+    for lineIndex, line in enumerate(lines):
+        for letterIndex, letter in enumerate(line):
+         if(letter == 'X'):
+            correctNextLetter(['north', 'south', 'east', 'west', 'northEast', 'northWest', 'southEast', 'southWest'], letter, lineIndex, letterIndex)
+    print(XMASCount)
+
+def partTwo():
+    for lineIndex, line in enumerate(lines):
+        for letterIndex, letter in enumerate(line):
+         if(letter == 'A'):
+            findMas(letterIndex, lineIndex)
+    print(MasCount)
+
+partTwo()
