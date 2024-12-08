@@ -68,12 +68,6 @@ def evaluate_all_operations(numbers, targetNumber):
     if(targetNumber in possibleanswers): return True
     return False
 
-
-
- 
-      
-
-
 def part_one(data):
   total = 0
   dataArray = format_data(data)
