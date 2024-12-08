@@ -33,6 +33,30 @@ def findAntiNodes(coordinate1, coordinate2):
     if(check_if_in_bounds(possibleNode1)) and (possibleNode1 not in list_of_antinodes): list_of_antinodes.append(possibleNode1)
     if(check_if_in_bounds(possibleNode2)) and (possibleNode2 not in list_of_antinodes): list_of_antinodes.append(possibleNode2)
 
+def findAntiNodesPartTwo(coordinate1, coordinate2):
+    x1, y1 = coordinate1
+    x2, y2 = coordinate2
+    
+    distanceX = x2 - x1
+    distanceY = y2 - y1
+    
+    possibleNode1 = [x2 + distanceX, y2 + distanceY]
+    possibleNode2 = [x1 - distanceX, y1 - distanceY]
+
+    if check_if_in_bounds([x1, y1]) and [x1, y1] not in list_of_antinodes:
+        list_of_antinodes.append([x1, y1])
+    if check_if_in_bounds([x2, y2]) and [x2, y2] not in list_of_antinodes:
+        list_of_antinodes.append([x2, y2])
+    
+    while check_if_in_bounds(possibleNode1):
+        if possibleNode1 not in list_of_antinodes:
+            list_of_antinodes.append(possibleNode1)
+        possibleNode1 = [possibleNode1[0] + distanceX, possibleNode1[1] + distanceY]
+    
+    while check_if_in_bounds(possibleNode2):
+        if possibleNode2 not in list_of_antinodes:
+            list_of_antinodes.append(possibleNode2)
+        possibleNode2 = [possibleNode2[0] - distanceX, possibleNode2[1] - distanceY]
 
 def check_if_in_bounds(coordinates):
         lineIndex = coordinates[0]
@@ -47,6 +71,6 @@ for frequency, coordinates in map_of_frequencies.items():
     for i in range(len(coordinates)):
         remainingCoordinates = coordinates[(i+1):]
         for index in range(len(remainingCoordinates)):
-            findAntiNodes(coordinates[i], remainingCoordinates[index])
+            findAntiNodesPartTwo(coordinates[i], remainingCoordinates[index])
 
 print(len(list_of_antinodes))
