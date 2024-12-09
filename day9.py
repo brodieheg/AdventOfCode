@@ -33,6 +33,7 @@ lastIndex = len(formatedData) - 1
 
 # for index in range(len(formatedData)):
 #     sum += (index * formatedData[index])
+# Starting part two ---
 dotIndexes = dotSizeMap.keys()
 dotSizes = dotSizeMap.values()
 fileIDs = fileSizeMap.keys()
